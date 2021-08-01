@@ -1,3 +1,6 @@
+import { rejects } from "assert/strict"
+import { resolve } from "path/posix";
+
 /*
 type funcionSinVariables = () => void;
 
@@ -40,7 +43,7 @@ const datos = (nombre:any, edad:number)=>{
 }
 
 console.log(datos(nombreCompleto('nico','senra'),26));
-*/
+
 const suma = (a:number,b:number)=>a+b;
 
 const resta = (a:number,b:number)=>a-b;
@@ -58,3 +61,21 @@ console.log(operacion(2,3,resta));
 console.log(operacion(2,3,multiplicacion));
 
 console.log(operacion(2,3,division));
+
+const dividir = (dividendo:number, divisor:number)=>{
+    return new Promise((resolve, reject) => {
+        if(divisor===0){
+            reject('No se puede dividir por cero')
+        }else resolve(dividendo/divisor)
+    })
+};
+
+dividir(10,2)
+    .then((resultado)=>console.log(`Resultado promesa es: ${resultado}`))
+    .catch((error)=>console.log(error))
+
+dividir(10,0)
+    .then((resultado)=>console.log(resultado))
+    .catch((error)=>console.log(error))
+
+*/
