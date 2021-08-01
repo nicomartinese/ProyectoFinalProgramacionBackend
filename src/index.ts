@@ -4,6 +4,7 @@ type funcionSinVariables = () => void;
 const fun:funcionSinVariables =() => {
     console.log('HOLA');
 }
+
 fun();
 
 type funcionConVariables =(param1:string, param2:number)=>number;
@@ -12,6 +13,7 @@ const fun2:funcionConVariables = (param1:string, param2:number)=>{
     console.log(`${param1} tiene ${param2} años de edad`);
     return param2;
 }
+
 console.log(fun2('nico',26));
 
 type funcionNumero = (num1:number, num2:number)=> number
@@ -20,6 +22,7 @@ const promedio:funcionNumero = (number1:number, number2:number)=>{
     const resultado = (number1+number2)/2;
     return resultado;
 }
+
 console.log(promedio(2,4));
 
 const prom = (n1:number, n2:number)=>{
@@ -28,13 +31,14 @@ const prom = (n1:number, n2:number)=>{
 
 console.log(prom(6,12));
 
-
 const nombreCompleto = (nombre:string, apellido:string)=>{
     return `${nombre} ${apellido}`
 }
+
 const datos = (nombre:any, edad:number)=>{
     return `La edad de ${nombre} es ${edad}`
 }
+
 console.log(datos(nombreCompleto('nico','senra'),26));
 */
 const suma = (a:number,b:number)=>a+b;
