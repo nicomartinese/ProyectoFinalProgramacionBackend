@@ -1,6 +1,3 @@
-import { rejects } from "assert/strict"
-import { resolve } from "path/posix";
-
 /*
 type funcionSinVariables = () => void;
 
