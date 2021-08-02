@@ -13,36 +13,34 @@ function funcion3 (mensaje) {
 }
 
 // const funcion3 = (mensaje) => {console.log(mensaje)}
+
 setTimeout(function(){funcion3('vitecomoe')}, 1000);
 
-const fin = () => console.log('Terminé');
-const mostrarLetras = (palabra,fin)=>{
-    let i = 0;
-    const timer = setInterval(() => {
-        if(i<palabra.length){
-            console.log(palabra[i]);
-            i++;   
-        }else{
-            clearInterval(timer);   
-            fin();
-        }
-    }, 100);
-}
-mostrarLetras('¡HOLA!', fin);
-*/
+const fin = ()=>console.log('Terminé');
 
-const fin = () => console.log('Terminé');
-const mostrarLetras = (palabra,fin)=>{
-    let i = 0;
-    const timer = setInterval(() => {
+const mostrarLetras = (palabra, fin) => {
+    let i=0;
+    const clear = setInterval(() => {
         if(i<palabra.length){
-            console.log(palabra[i]);
-            i++;   
+            console.log(palabra[i])
+            i++
         }else{
-            clearInterval(timer);   
+            clearInterval(clear);
             fin();
         }
-    }, 100);
+    }, 500);
 }
-mostrarLetras('¡HOLA!', fin);
+
+setTimeout(() => {
+   mostrarLetras('¡Hola!',fin) 
+}, 0);
+
+setTimeout(() => {
+   mostrarLetras('¡Hola!',fin) 
+}, 250);
+
+setTimeout(() => {
+   mostrarLetras('¡Hola!',fin) 
+}, 500);
+*/
 
