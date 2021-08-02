@@ -42,7 +42,6 @@ fs.appendFile('./Archivos/archivoAsync.txt', 'TEXTO AGREGADO', (err)=>{
         })
     }
 })
-*/
 
 fs.readFile('../package.json', 'utf-8', (err,data)=>{
     if(err){
@@ -63,3 +62,41 @@ fs.readFile('../package.json', 'utf-8', (err,data)=>{
         })
     }
 })
+
+async function leerInfo(){
+    try{
+    let info = JSON.parse(await fs.promises.readFile('../info.txt', 'utf-8'))
+    console.log(info);
+    info.contenidoObj.author = 'Coderhouse'
+    console.log(info.contenidoObj);
+    await fs.promises.writeFile('../package.json.coder', JSON.stringify(info, null, 2), 'utf-8')
+    }
+    catch(err){
+        console.log('Error leyendo: ' + err.message)
+    }
+}
+
+leerInfo();
+*/
+
+class Contenedor {
+    constructor(nombreArchivo){
+        this.nombreArchivo = nombreArchivo;
+    }
+    save(obj){
+        
+    }
+    getById(){
+
+    }
+    getAll(){
+
+    }
+    deleteById(){
+
+    }
+    deleteAll(){
+
+    }
+
+}
