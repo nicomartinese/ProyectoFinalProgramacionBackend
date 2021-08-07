@@ -1,5 +1,11 @@
 const fs = require('fs');
-/*
+
+/* -------------------------------------------------------------------------- */
+/*                             MANEJO DE ARCHIVOS JS                          */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------- CREACION -------------------------------- 
+
 fs.writeFileSync('./Archivos/archivoSync.txt', 'ARCHIVO CREADO');
 
 try {
@@ -19,7 +25,9 @@ fs.writeFile('./Archivos/archivoAsync.txt', 'ARCHIVO ASINCRONICO', (error)=>{
     }else{
         console.log("Archivo creado");
     }
-});
+});*/
+
+/* --------------------------------- LECTURA -------------------------------- 
 
 fs.readFile('./Archivos/archivoAsync.txt','utf-8', (err, data)=>{
     if(err){
@@ -27,7 +35,9 @@ fs.readFile('./Archivos/archivoAsync.txt','utf-8', (err, data)=>{
     }else{
         console.log(data)
     }
-})
+})*/
+
+/* --------------------------- AGREGADO + LECTURA --------------------------- 
 
 fs.appendFile('./Archivos/archivoAsync.txt', 'TEXTO AGREGADO', (err)=>{
     if(err){
@@ -42,6 +52,7 @@ fs.appendFile('./Archivos/archivoAsync.txt', 'TEXTO AGREGADO', (err)=>{
         })
     }
 })
+
 
 fs.readFile('../package.json', 'utf-8', (err,data)=>{
     if(err){
@@ -61,7 +72,9 @@ fs.readFile('../package.json', 'utf-8', (err,data)=>{
             }
         })
     }
-})
+})*/
+
+/* ------------------------------- ASYNC AWAIT ------------------------------ 
 
 async function leerInfo(){
     try{
@@ -69,7 +82,7 @@ async function leerInfo(){
     console.log(info);
     info.contenidoObj.author = 'Coderhouse'
     console.log(info.contenidoObj);
-    await fs.promises.writeFile('../package.json.coder', JSON.stringify(info, null, 2), 'utf-8')
+    await fs.promises.writeFile('../package.json.coder', )
     }
     catch(err){
         console.log('Error leyendo: ' + err.message)
@@ -80,11 +93,18 @@ leerInfo();
 */
 
 class Contenedor {
-    constructor(nombreArchivo){
+    constructor (nombreArchivo){
         this.nombreArchivo = nombreArchivo;
+        this.id=0;
     }
-    save(obj){
-        
+    async save(obj){
+        try{
+            let info = JSON.parse(await fs.promises.readFile(this.nombreArchivo, 'utf-8'))
+            console.log(info)
+        }
+        catch(err){
+            console.log('Error leyendo: ', err.message)
+        }
     }
     getById(){
 
@@ -100,3 +120,4 @@ class Contenedor {
     }
 
 }
+const archivo = new Contenedor ("../info.txt")
