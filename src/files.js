@@ -92,15 +92,17 @@ async function leerInfo(){
 leerInfo();
 */
 
+
 class Contenedor {
     constructor (nombreArchivo){
         this.nombreArchivo = nombreArchivo;
-        this.id=0;
+
     }
     async save(obj){
         try{
-            let info = JSON.parse(await fs.promises.readFile(this.nombreArchivo, 'utf-8'))
-            console.log(info)
+            let info = JSON.parse(await fs.promises.readFile(this.nombreArchivo, 'utf-8'));
+            info.push(obj);
+            await fs.promises.writeFile(this.nombreArchivo,JSON.stringify(info, null, 2));
         }
         catch(err){
             console.log('Error leyendo: ', err.message)
@@ -109,15 +111,31 @@ class Contenedor {
     getById(){
 
     }
-    getAll(){
-
+    async getAll(){
+        try{
+            let arr = JSON.parse(await fs.promises.readFile(this.nombreArchivo, 'utf-8'));
+            return arr;
+        }
+        catch(err){
+            console.log('Error leyendo: ', err.message)
+        }
     }
     deleteById(){
 
     }
-    deleteAll(){
-
+    async deleteAll(){
+        try{
+            await fs.promises.writeFile(this.nombreArchivo,JSON.stringify(null, null, 2));
+        }
+        catch(err){
+            console.log('Error leyendo: ', err.message)
+        }
     }
-
 }
-const archivo = new Contenedor ("../info.txt")
+const objeto = {
+    nombre: "nicolas",
+    apellido: "senra",
+    edad: 26
+}
+const archivo = new Contenedor ("../productos.txt");
+console.log(archivo.save(objeto))
