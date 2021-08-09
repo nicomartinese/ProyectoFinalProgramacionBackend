@@ -113,8 +113,8 @@ class Contenedor {
     }
     async getAll(){
         try{
-            let arr = JSON.parse(await fs.promises.readFile(this.nombreArchivo, 'utf-8'));
-            return arr;
+            const arr = JSON.parse(await fs.promises.readFile(this.nombreArchivo, 'utf-8'));
+            
         }
         catch(err){
             console.log('Error leyendo: ', err.message)
@@ -138,4 +138,4 @@ const objeto = {
     edad: 26
 }
 const archivo = new Contenedor ("../productos.txt");
-console.log(archivo.save(objeto))
+console.log(archivo.getAll())

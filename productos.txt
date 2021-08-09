@@ -58,10 +58,5 @@
     "nombre": "nicolas",
     "apellido": "senra",
     "edad": 26
-  },
-  {
-    "nombre": "nicolas",
-    "apellido": "senra",
-    "edad": 26
   }
 ]
